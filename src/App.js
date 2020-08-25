@@ -65,7 +65,7 @@ class App extends Component {
         this.setState({
             fullData: data.list,
             dailyData: this.getMaxMinPerDay(data.list, dailyData)
-          }, () => console.log(this.state))
+          })
       })
   }
   render() {

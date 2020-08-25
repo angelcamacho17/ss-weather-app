@@ -27,24 +27,22 @@ class DayCard extends React.Component {
       weekday: week,
       imgURL: url
     })
-    console.log(this.state)
   }
 
   render() {
 
     return (
-      <div className="col-sm-2" onClick={this.goToDay}>
-      <div className="card" >
+      <div className="day-card" onClick={this.goToDay}>
         <h3 className="card-title">{moment(this.state.newDate).format('dddd')}</h3>
         <p className="text-muted">{moment(this.state.newDate).format('MMMM Do, h:mm a')}</p>
         <i className={`owf owf-${this.props.reading.weather[0].id} owf-5x`}></i>
         <h2>{Math.round(this.props.reading.main.temp)} °C</h2>
         <div className="card-body">
-          <div className="max">Max temp: {this.props.reading.max} </div>
-          <div className="max">Min temp: {this.props.reading.mini} </div>
+          <div className="max">max: {Math.round(this.props.reading.max)} °C</div>
+          <div className="max">min: {Math.round(this.props.reading.mini)} °C</div>
           <p className="card-text">{this.props.reading.weather[0].description}</p>
         </div>
-      </div>
+      
     </div>
     )
   }

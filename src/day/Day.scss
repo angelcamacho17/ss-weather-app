@@ -2,7 +2,8 @@
     display: flex;
     padding: 32px;
     height: calc(100vh - 128px);
-    justify-content: space-around;
+    justify-content: space-evenly;
+    box-sizing: border-box;
 
     .page-left {
         display: flex;
@@ -20,8 +21,8 @@
         }
 
         .graph {
-
-        }
+            display: block;
+        }   
 
     }
 
@@ -31,7 +32,7 @@
         justify-content: center;
 
         .temperatures {
-            width: 220px;
+            width: 250px;
             overflow: auto;
             padding: 8px 16px;
             color: rgba(0, 0, 0, 0.87);
@@ -69,4 +70,20 @@
         }
     }
 
+}
+
+@media (max-width: 760px) {
+    .day-container{
+        flex-flow: column;
+        box-sizing: border-box;
+
+        .page-left {
+            .graph {
+                display: none;
+            }
+        }
+        .page-right {
+            align-self: center;
+        }
+    }
 }

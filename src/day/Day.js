@@ -9,8 +9,6 @@ class Day extends React.Component {
             day: props.match.params.day,
             data: []
         }
-        console.log(props.match);
-        console.log(this.props.fullData)
         this.dayStats = this.dayStats.bind(this)
 
     }
@@ -20,22 +18,17 @@ class Day extends React.Component {
     }
     
     componentDidMount() {
-        console.log(this.props.fullData)
     }
 
     dayStats(){
-        console.log(this.props.fullData)
         if(this.props.fullData){
             for (let reading of this.props.fullData){
-                console.log(reading.dt_txt.split(" ")[0])
-                console.log(this.state.day)
                 if (reading.dt_txt.split(" ")[0] === this.state.day){
                     this.state.data.push(reading);
                 }
             }
             
         }
-        console.log(this.state.data)
     }
 
   render() {
@@ -47,7 +40,9 @@ class Day extends React.Component {
                     <h3 className="city">Santiago de Chile, CL</h3>
                     <h5 className="time">{this.state.day}</h5>
                 </div>
-                <BarGraph data={this.state.data} percentage={false}/>
+                <div className="graph">
+                    <BarGraph data={this.state.data} percentage={false}/>
+                </div>
             </div>
             <div className="page-right">
                 <div className="temperatures">
@@ -57,10 +52,11 @@ class Day extends React.Component {
                                     <i className={imgURL}></i>
                                     
                                     <span className="time">
-                                        {value.dt_txt.split(" ")[1]}
+                                        {value.dt_txt.split(" ")[1].split(":")[0]}:
+                                        {value.dt_txt.split(" ")[1].split(":")[1]} -
                                     </span>
                                     <span className="degrees">
-                                        {value.main.temp}
+                                        {value.main.temp} °C
                                     </span>
                                 </div>
                     })}

@@ -2,22 +2,20 @@ import React from 'react';
 import { mykey } from '../apiConfig';
 import DayCard from '../day-card/DayCard'
 import './WeekContainer.scss';
-
+let flag = true;
 class WeekContainer extends React.Component {
 
     constructor(props){
         super(props)
-        console.log(this.props.fullData)
         this.goToDay = this.goToDay.bind(this)
     }
 
     goToDay(){
-        console.log('here')
     }
 
     formatDayCards = () => {
         if (this.props.dailyData){
-            return this.props.dailyData.map((reading, index) => <DayCard {...this.props} reading={reading} key={index} />)
+            return this.props.dailyData.map((reading, index) => <DayCard {...this.props} reading={reading} key={index}/>)
         } else {
             return []
         }

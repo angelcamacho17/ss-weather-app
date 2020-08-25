@@ -24,7 +24,7 @@ function BarGraph(props) {
   const yMax = height - margin.top - margin.bottom;
 
   // We'll make some helpers to get at the data we want
-  const x = d => d.dt_txt.split(" ")[1];
+  const x = d => d.dt_txt.split(" ")[1].split(":")[0] + ':' + d.dt_txt.split(" ")[1].split(":")[1];
   const y = d => d.main.temp;
 
   // Given the max on the y-bar, figure out how much "top margin" we should add

@@ -2,7 +2,8 @@
     display: flex;
     color: white;
     flex-flow: column;
-    height: calc(100vh - 128px) ;
+    height: calc(100vh - 128px);
+    box-sizing: border-box;
 
     .page-content {
         padding: 32px;
@@ -20,11 +21,22 @@
             flex-flow: column;
             justify-content: center;
             padding: 32px 0;
+            padding-top: 48px;
         
             .cards {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                grid-auto-rows: 350px;
+                column-gap: 0.5em;
+                grid-column-gap: 0.5em; /* for older browsers */
+                row-gap: 0.5em;
+                grid-row-gap: 0.5em; /* for older browsers */
+            }
+
+            @media (min-width: 1400px) {
+                .cards {
+                    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+                }
             }
         }
     }
