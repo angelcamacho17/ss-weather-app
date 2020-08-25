@@ -1,4 +1,8 @@
+html {
+  height: 100vh !important;
+}
 body {
+  height: 100% !important;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -24,5 +28,17 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-track {
   border-radius: 25px;
+}
+
+footer {
+  width: 100%;
+  bottom: 0;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: end;
+  padding: 8px;
+
+  .name {
+    color: black !important;
+  }
 }
  

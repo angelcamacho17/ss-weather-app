@@ -42,7 +42,6 @@ class DayCard extends React.Component {
           <div className="max">min: {Math.round(this.props.reading.mini)} °C</div>
           <p className="card-text">{this.props.reading.weather[0].description}</p>
         </div>
-      
     </div>
     )
   }

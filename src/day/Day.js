@@ -45,6 +45,7 @@ class Day extends React.Component {
                 </div>
             </div>
             <div className="page-right">
+                <h6 className="display-6">Hours - Degrees</h6>
                 <div className="temperatures">
                     {this.state.data.map((value, index) => {
                         let imgURL = `owf owf-${value.weather[0].id} owf-1  x`

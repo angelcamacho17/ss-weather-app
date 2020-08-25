@@ -1,9 +1,11 @@
 .week-container {
-    display: flex;
+    display: table;
     color: white;
     flex-flow: column;
-    height: calc(100vh - 128px);
+    height: calc(100vh - 168px);
     box-sizing: border-box;
+    height: 100%;
+    width: 100%;
 
     .page-content {
         padding: 32px;

@@ -1,7 +1,7 @@
 .day-container {
     display: flex;
     padding: 32px;
-    height: calc(100vh - 128px);
+    height: calc(100vh - 168px);
     justify-content: space-evenly;
     box-sizing: border-box;
 
@@ -34,7 +34,7 @@
         .temperatures {
             width: 250px;
             overflow: auto;
-            padding: 8px 16px;
+            padding: 0px 16px;
             color: rgba(0, 0, 0, 0.87);
 
             .temperature {

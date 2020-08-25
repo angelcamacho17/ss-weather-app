@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import { Switch, Route } from "react-router-dom";
 import WeekContainer from './week-container/WeekContainer';
 import Day from './day/Day';
@@ -87,6 +87,16 @@ class App extends Component {
             )}
           />
         </Switch>
+        <footer>
+          <span>by </span>
+          <span className="resume-link"> 
+            <a href="https://angelcamacho17.github.io/resume/" target="_blank">
+              <span className="name">
+              Angel Camacho
+              </span>
+            </a>
+          </span> - <span>Software Developer</span>
+        </footer>
       </div>
     );
   }
