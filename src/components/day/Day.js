@@ -1,5 +1,5 @@
 import React from 'react';
-import BarGraph from '../graph/BarGraph';
+import BarGraph from '../../shared/graph/BarGraph';
 import './Day.scss';
 
 class Day extends React.Component {

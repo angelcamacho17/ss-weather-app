@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.scss';
 import { Switch, Route } from "react-router-dom";
-import WeekContainer from './week-container/WeekContainer';
-import Day from './day/Day';
+import WeekContainer from './components/week-container/WeekContainer';
+import Day from './components/day/Day';
 import { mykey } from './apiConfig';
-import AppHeader from './header/AppHeader';
+import AppHeader from './shared/header/AppHeader';
 
 class App extends Component {
    constructor(){

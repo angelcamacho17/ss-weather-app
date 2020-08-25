@@ -1,6 +1,6 @@
 import React from 'react';
-import { mykey } from '../apiConfig';
-import DayCard from '../day-card/DayCard'
+import { mykey } from '../../apiConfig';
+import DayCard from '../../shared/day-card/DayCard'
 import './WeekContainer.scss';
 let flag = true;
 class WeekContainer extends React.Component {
