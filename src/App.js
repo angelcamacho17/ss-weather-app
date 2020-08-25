@@ -27,7 +27,11 @@ class App extends Component {
                   })
                   obj = obj[0]
                   const index = dailyData.indexOf(obj)
-                  dailyData[index].max = day.main.temp_max;
+              if (index!==-1){
+                dailyData[index].max = day.main.temp_max;
+
+              }
+
               }
               
           } else {
@@ -73,9 +77,7 @@ class App extends Component {
           render={(props) => (
             <WeekContainer {...props} fullData={this.state.fullData} dailyData={this.state.dailyData} />
           )}
-          />
-          {/* <Route exact path="/" fullData={this.state.fullData} dailyData={this.state.dailyData} component={WeekContainer} /> */}
-          <Route
+          /><Route
             exact
             path='/:day'
             render={(props) => (
