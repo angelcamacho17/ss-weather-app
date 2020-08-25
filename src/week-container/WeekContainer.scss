@@ -1,0 +1,11 @@
+.content {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
