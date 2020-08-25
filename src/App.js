@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import WeekContainer from './week-container/WeekContainer';
 import Day from './day/Day';
 import { mykey } from './apiConfig';
+import AppHeader from './header/AppHeader';
 
 class App extends Component {
    constructor(){
@@ -70,6 +71,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <AppHeader {...this.props}></AppHeader>
          <Switch>
          <Route
           exact

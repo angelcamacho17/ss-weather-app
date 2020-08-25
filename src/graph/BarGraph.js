@@ -68,7 +68,7 @@ function BarGraph(props) {
               y={yMax - barHeight}
               height={barHeight}
               width={xScale.bandwidth()}
-              fill="#3399F3"
+              fill="#6610f2"
             />
             <AxisLeft
               scale={yScale}
@@ -76,8 +76,8 @@ function BarGraph(props) {
               left={60}
               hideZero
               label={'Temperature'}
-              stroke={'#1b1a1e'}
-              tickTextFill={'#1b1a1e'}
+              stroke={'#00000078'}
+              tickTextFill={'#6610f2'}
               numTicks={5}
               axisClassName="leftAxis"
             />
@@ -87,12 +87,12 @@ function BarGraph(props) {
               left={60}
               hideZero
               label={'Hours'}
-              stroke={'#1b1a1e'}
-              tickTextFill={'#1b1a1e'}
+              stroke={'#00000078'}
+              tickTextFill={'#6610f2'}
               axisClassName="rightAxis"
             />
             <Text
-              x={xPoint(d) + 60 + xScale.bandwidth() / 2 - 5}
+              x={xPoint(d) + 40 + xScale.bandwidth() / 2 - 5}
               y={yMax - barHeight - 5}
             >{`${d.main.temp} °C`}</Text>
           </Group>
@@ -106,9 +106,9 @@ BarGraph.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       dt_txt: PropTypes.string,
-      main:{
+      main:PropTypes.shape({
         temp: PropTypes.number
-      } 
+      })
     })
   ).isRequired,
   percentage: PropTypes.bool,
@@ -119,7 +119,7 @@ BarGraph.propTypes = {
 BarGraph.defaultProps = {
   percentage: false,
   width: 600,
-  height: 300
+  height: 350
 };
 
 export default BarGraph;

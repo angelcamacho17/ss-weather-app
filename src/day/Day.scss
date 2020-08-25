@@ -1,0 +1,72 @@
+.day-container {
+    display: flex;
+    padding: 32px;
+    height: calc(100vh - 128px);
+    justify-content: space-around;
+
+    .page-left {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+
+        .title {
+            .city {
+                color: rgba(0, 0, 0, 0.87);
+            }
+        
+            .time {
+                color: rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .graph {
+
+        }
+
+    }
+
+    .page-right {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+
+        .temperatures {
+            width: 220px;
+            overflow: auto;
+            padding: 8px 16px;
+            color: rgba(0, 0, 0, 0.87);
+
+            .temperature {
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                margin: 16px 0;
+                border-radius: 4px;
+                padding: 4px 8px;
+                box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+
+                .time {
+                    margin: 0 8px; 
+                    margin-right: 4px;
+                }
+
+                .degrees {
+                    margin: 0 8px; 
+                    margin-left: 4px;
+                }
+            }
+        }
+        .temperatures::-webkit-scrollbar {
+            width: 8px;
+            background-color: #e5e6e8;
+        }
+        
+        .temperatures::-webkit-scrollbar-thumb {
+            border-radius: 25px;
+            background-color: #afb4b8;
+        }
+        
+        .temperatures::-webkit-scrollbar-track {
+            border-radius: 25px;
+        }
+    }
+
+}

@@ -1,5 +1,6 @@
 import React from 'react';
-import BarGraph from '../graph/BarGraph'
+import BarGraph from '../graph/BarGraph';
+import './Day.scss';
 
 class Day extends React.Component {
     constructor(props){
@@ -40,9 +41,31 @@ class Day extends React.Component {
   render() {
     this.dayStats()
     return (
-        <div className="container">
-            <h3>Weather for the day {this.state.day}</h3>
-            <BarGraph data={this.state.data} percentage={false} width={600} height={300}/>
+        <div className="day-container">
+            <div className="page-left">
+                <div className="title">
+                    <h3 className="city">Santiago de Chile, CL</h3>
+                    <h5 className="time">{this.state.day}</h5>
+                </div>
+                <BarGraph data={this.state.data} percentage={false}/>
+            </div>
+            <div className="page-right">
+                <div className="temperatures">
+                    {this.state.data.map((value, index) => {
+                        let imgURL = `owf owf-${value.weather[0].id} owf-1  x`
+                        return <div className="temperature" key={index}>
+                                    <i className={imgURL}></i>
+                                    
+                                    <span className="time">
+                                        {value.dt_txt.split(" ")[1]}
+                                    </span>
+                                    <span className="degrees">
+                                        {value.main.temp}
+                                    </span>
+                                </div>
+                    })}
+                </div>
+            </div>
         </div>
     )
   }

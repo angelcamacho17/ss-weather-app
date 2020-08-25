@@ -25,14 +25,15 @@ class WeekContainer extends React.Component {
   render() {
 
     return (
-        <div className="container">
-        <h1 className="display-1 jumbotron">5-Day Forecast.</h1>
-        <h5 className="display-5 text-muted">Santiago metropolitan region, CL</h5>
-          <div className="content">
-            <div className="cards">
-                {this.formatDayCards()}
+        <div className="week-container">
+        <div className="page-content">
+            <h5 className="display-4 text-muted city">Santiago metropolitan region, CL</h5>
+            <div className="content">
+                <div className="cards">
+                    {this.formatDayCards()}
+                </div>
             </div>
-          </div>
+            </div>
         </div>
     )
   }
