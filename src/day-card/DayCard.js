@@ -15,7 +15,7 @@ const DayCard = ({ reading }) => {
         <h3 className="card-title">{moment(newDate).format('dddd')}</h3>
         <p className="text-muted">{moment(newDate).format('MMMM Do, h:mm a')}</p>
         <i className={imgURL}></i>
-        <h2>{Math.round(reading.main.temp)} °F</h2>
+        <h2>{Math.round(reading.main.temp)} °C</h2>
         <div className="card-body">
           <div className="max">Max temp: {reading.max} </div>
           <div className="max">Min temp: {reading.mini} </div>

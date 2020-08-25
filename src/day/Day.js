@@ -1,4 +1,5 @@
 import React from 'react';
+import BarGraph from '../graph/BarGraph'
 
 class Day extends React.Component {
     constructor(props){
@@ -41,18 +42,7 @@ class Day extends React.Component {
     return (
         <div className="container">
             <h3>Weather for the day {this.state.day}</h3>
-            <div>
-                {this.state.data.map((day, index) => {
-                    return <div key={index}>
-                                <span>
-                                    {day.dt_txt.split(" ")[1]}
-                                </span>
-                                <span>
-                                    {day.main.temp}
-                                </span>
-                            </div>
-                })}
-            </div>
+            <BarGraph data={this.state.data} percentage={false} width={600} height={300}/>
         </div>
     )
   }
