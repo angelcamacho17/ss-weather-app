@@ -1,75 +1,61 @@
 import React from 'react';
-import './WeekContainer.scss';
 
 class Day extends React.Component {
-    state = {
-        fullData: [],
-        dailyData: [],
+    constructor(props){
+        super(props)
+        this.state = {
+            day: props.match.params.day,
+            data: []
+        }
+        console.log(props.match);
+        console.log(this.props.fullData)
+        this.dayStats = this.dayStats.bind(this)
+
     }
 
-    getMaxMinPerDay(fullData, dailyData){
-        let maxWea = new Map()
-        let minWea = new Map()
-        for (let day of fullData){
-            let date= day.dt_txt.split(" ")[0];
-            if (maxWea.get(date)){
-                if (day.main.temp_max > maxWea.get(date)){
-                    maxWea.set(date, day.main.temp_max)
-                    let obj = dailyData.filter(reading => {
-                        return reading.dt_txt.split(" ")[0] === day.dt_txt.split(" ")[0]
-                    })
-                    obj = obj[0]
-                    const index = dailyData.indexOf(obj)
-                    dailyData[index].max = day.main.temp_max;
-                }
-                
-            } else {
-                maxWea.set(date, day.main.temp_max)
-            }
-            if (day.main.temp_min < minWea.get(date)){
-                minWea.set(date, day.main.temp_min)
-                let obj = dailyData.filter(reading => {
-                    return reading.dt_txt.split(" ")[0] === day.dt_txt.split(" ")[0]
-                })
-                obj = obj[0]
-                const index = dailyData.indexOf(obj)
-                dailyData[index].mini = day.main.temp_min;
-            }else {
-                minWea.set(date, day.main.temp_min)
-            }
-        }
-        return dailyData;
+    componentWillMount(){
+        this.dayStats()
     }
     
-    componentDidMount = () => {
-        const weatherURL =
-        `http://api.openweathermap.org/data/2.5/forecast?q=santiago,cl&units=metric&APPID=${mykey}`
-        fetch(weatherURL)
-        .then(res => res.json())
-        .then(data => {
-          const dailyData = data.list.filter(reading => reading.dt_txt.includes("18:00:00"))
-          this.setState({
-              fullData: data.list,
-              dailyData: this.getMaxMinPerDay(data.list, dailyData)
-            }, () => console.log(this.state))
-        })
+    componentDidMount() {
+        console.log(this.props.fullData)
     }
-    formatDayCards = () => {
-        return this.state.dailyData.map((reading, index) => <DayCard reading={reading} key={index} />)
-    }
-  render() {
 
+    dayStats(){
+        console.log(this.props.fullData)
+        if(this.props.fullData){
+            for (let reading of this.props.fullData){
+                console.log(reading.dt_txt.split(" ")[0])
+                console.log(this.state.day)
+                if (reading.dt_txt.split(" ")[0] === this.state.day){
+                    this.state.data.push(reading);
+                }
+            }
+            
+        }
+        console.log(this.state.data)
+    }
+
+  render() {
+    this.dayStats()
     return (
         <div className="container">
-        <h1 className="display-1 jumbotron">5-Day Forecast.</h1>
-        <h5 className="display-5 text-muted">Santiago metropolitan region, CL</h5>
-          <div className="content">
-            <div className="cards">
-                
+            <h3>Weather for the day {this.state.day}</h3>
+            <div>
+                {this.state.data.map((day, index) => {
+                    return <div key={index}>
+                                <span>
+                                    {day.dt_txt.split(" ")[1]}
+                                </span>
+                                <span>
+                                    {day.main.temp}
+                                </span>
+                            </div>
+                })}
             </div>
-          </div>
         </div>
     )
   }
 
 }
+export default Day;
