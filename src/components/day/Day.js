@@ -30,6 +30,10 @@ class Day extends React.Component {
                     this.state.data.push(reading);
                 }
             }
+
+            if(this.state.data.length===0){
+                this.props.history.push('/')
+            }
             
         }
     }
