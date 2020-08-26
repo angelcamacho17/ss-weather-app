@@ -34,7 +34,7 @@ class DayCard extends React.Component {
     return (
       <div className="day-card" onClick={this.goToDay}>
         <h3 className="card-title">{moment(this.state.newDate).format('dddd')}</h3>
-        <p className="text-muted">{moment(this.state.newDate).format('MMMM Do, h:mm a')}</p>
+        <p className="text-muted">{moment(this.props.reading.dt_txt).format('MMMM Do, h:mm a')}</p>
         <i className={`owf owf-${this.props.reading.weather[0].id} owf-5x`}></i>
         <h2>{Math.round(this.props.reading.main.temp)} °C</h2>
         <div className="card-body">
