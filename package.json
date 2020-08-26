@@ -12,13 +12,14 @@
     "@vx/shape": "0.0.198",
     "@vx/text": "0.0.198",
     "bootstrap": "^4.5.2",
+    "dotenv": "^8.2.0",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "open-weather-icons": "0.0.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^3.4.3",
     "vx": "0.0.1"
   },
   "scripts": {
