@@ -1,6 +1,7 @@
 import React from 'react';
 import BarGraph from '../../shared/graph/BarGraph';
 import './Day.scss';
+var moment = require('moment');
 
 class Day extends React.Component {
     constructor(props){
@@ -38,7 +39,7 @@ class Day extends React.Component {
             <div className="page-left">
                 <div className="title">
                     <h3 className="city">Santiago de Chile, CL</h3>
-                    <h5 className="time">{this.state.day}</h5>
+                    <h5 className="time">{moment(this.state.day).format('dddd')}</h5>
                 </div>
                 <div className="graph">
                     <BarGraph data={this.state.data} percentage={false}/>
