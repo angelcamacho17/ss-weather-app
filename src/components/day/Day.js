@@ -58,7 +58,7 @@ class Day extends React.Component {
                                         {value.dt_txt.split(" ")[1].split(":")[1]} -
                                     </span>
                                     <span className="degrees">
-                                        {value.main.temp} °C
+                                        {Math.round(value.main.temp)} °C
                                     </span>
                                 </div>
                     })}
