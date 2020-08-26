@@ -25,6 +25,8 @@ class Day extends React.Component {
         if(this.props.fullData){
             for (let reading of this.props.fullData){
                 if (reading.dt_txt.split(" ")[0] === this.state.day){
+                    // to avoid duplicates
+                    if (this.state.data.indexOf(reading)=== -1)
                     this.state.data.push(reading);
                 }
             }
