@@ -14,66 +14,63 @@ class App extends Component {
        fullData: [],
        dailyData: [],
     }
+    this.setMax = this.setMax.bind(this)
    }
 
+  setMax(dailyData, day) {
+    let obj = dailyData.filter(reading => {
+      return reading.dt_txt === day.dt_txt.split(" ")[0]+ " 18:00:00"
+    })
+    obj = obj[0]
+    const index = dailyData.indexOf(obj)
+    if (index!==-1){
+      dailyData[index].max = day.main.temp;
+
+    }
+    return dailyData
+  }
+
+  setMin(dailyData, day){
+    let obj = dailyData.filter(reading => {
+      return reading.dt_txt === day.dt_txt.split(" ")[0] + " 18:00:00"
+    })
+    obj = obj[0]
+    const index = dailyData.indexOf(obj)
+    if (index!==-1){
+        dailyData[index].mini = Math.round(day.main.temp);
+    }
+    return dailyData;
+  }
+
   getMaxMinPerDay(fullData, dailyData){
-      let maxWea = new Map()
-      let minWea = new Map()
+      let maxTemp = new Map()
+      let minTemp = new Map()
       console.log(fullData)
       for (let day of fullData){
           let date= day.dt_txt.split(" ")[0];
-          if (maxWea.get(date)){
-              if (day.main.temp > maxWea.get(date)){
-                  maxWea.set(date, day.main.temp)
-                  let obj = dailyData.filter(reading => {
-                      return reading.dt_txt === day.dt_txt.split(" ")[0]+ " 18:00:00"
-                  })
-                  obj = obj[0]
-                  const index = dailyData.indexOf(obj)
-                  if (index!==-1){
-                    dailyData[index].max = day.main.temp;
-
-                  }
-
+          // Fill maximums
+          if (maxTemp.get(date)){
+              if (day.main.temp > maxTemp.get(date)){
+                  maxTemp.set(date, day.main.temp)
+                  this.setMax(dailyData, day);
               }
               
           } else {
-              if(maxWea.get(date)===undefined){
-                maxWea.set(date, day.main.temp)
-                let obj = dailyData.filter(reading => {
-                  return reading.dt_txt === day.dt_txt.split(" ")[0]+ " 18:00:00"
-                })
-                obj = obj[0]
-                const index = dailyData.indexOf(obj)
-                if (index!==-1){
-                  dailyData[index].max = day.main.temp;
-
-                }
+              if(maxTemp.get(date)===undefined){
+                maxTemp.set(date, day.main.temp)
+                this.setMax(dailyData, day);
               }
           }
-          if (minWea.get(date)){
-            if (Math.round(day.main.temp) < minWea.get(date)){
-                minWea.set(date, Math.round(day.main.temp))
-                let obj = dailyData.filter(reading => {
-                    return reading.dt_txt === day.dt_txt.split(" ")[0] + " 18:00:00"
-                })
-                obj = obj[0]
-                const index = dailyData.indexOf(obj)
-                if (index!==-1){
-                    dailyData[index].mini = Math.round(day.main.temp);
-                }
+          // Fill minimuns
+          if (minTemp.get(date)){
+            if (Math.round(day.main.temp) < minTemp.get(date)){
+                minTemp.set(date, Math.round(day.main.temp))
+                this.setMin(dailyData, day)
             }
           } else {
-              if(minWea.get(date)===undefined){
-                minWea.set(date, Math.round(day.main.temp))
-                let obj = dailyData.filter(reading => {
-                  return reading.dt_txt === day.dt_txt.split(" ")[0] + " 18:00:00"
-                })
-                obj = obj[0]
-                const index = dailyData.indexOf(obj)
-                if (index!==-1){
-                    dailyData[index].mini = Math.round(day.main.temp);
-                }
+              if(minTemp.get(date)===undefined){
+                minTemp.set(date, Math.round(day.main.temp))
+                this.setMin(dailyData, day)
               }
           }
         }
